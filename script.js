@@ -1,6 +1,6 @@
 let nombre = document.querySelector(".nombre")
 let mail = document.querySelector(".mail")
-let contra = document.querySelector(".contra")
+let contra = document.querySelector(".contra") 
 let nuevaContra = document.querySelector(".nuevaContra")
         
 let span1 = document.querySelector(".span1")
@@ -8,7 +8,6 @@ let span2 = document.querySelector(".span2")
 let span3 = document.querySelector(".span3")
 let span4 = document.querySelector(".span4")
 
-let mensajeNombre
 nombre.addEventListener("input", (event) => {
     if(nombre.value.length <= 3 ){
         mensajeNombre = "El nombre debe de tener mas de tres caracteres."
@@ -33,3 +32,11 @@ mail.addEventListener("input", (event) => {
         span2.style.color = "#ff0000"
     }
 });
+
+const regex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+contra.addEventListener
+//8 caracteres una letra y un numero
+
+function ValidarContra(contraseña){
+    return regex.test(contraseña.value)
+}
