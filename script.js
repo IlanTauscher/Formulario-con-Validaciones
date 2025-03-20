@@ -8,6 +8,7 @@ let span2 = document.querySelector(".span2")
 let span3 = document.querySelector(".span3")
 let span4 = document.querySelector(".span4")
 
+let mensajeNombre
 nombre.addEventListener("input", (event) => {
     if(nombre.value.length <= 3 ){
         mensajeNombre = "El nombre debe de tener mas de tres caracteres."
@@ -34,9 +35,37 @@ mail.addEventListener("input", (event) => {
 });
 
 const regex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
-contra.addEventListener
-//8 caracteres una letra y un numero
+let mensajeContra
+contra.addEventListener("input", (event) => {
+    let validar = ValidarContra(contra)
+    if(validar){
+        mensajeContra = "Contraseña valida."
+        span3.innerHTML = mensajeContra
+        span3.style.color = "#15b000"
+    }else{
+        mensajeContra = "Contraseña invalida. la contraseña debe de tener al menos 8 caracteres una letra y un numero."
+        span3.innerHTML = mensajeContra
+        span3.style.color = "#ff0000"
+    }
+});
 
 function ValidarContra(contraseña){
     return regex.test(contraseña.value)
+}
+
+let mensajeContraNueva
+nuevaContra.addEventListener("input", (event) => {
+    if(nuevaContra.value == contra.value){
+        mensajeContraNueva = "Contraseña valida."
+        span4.innerHTML = mensajeContraNueva
+        span4.style.color = "#15b000"
+    }else if(nuevaContra.value != contra.value){
+        mensajeContraNueva = "La contraseña debe de ser igual a la anterior."
+        span4.innerHTML = mensajeContraNueva
+        span4.style.color = "#ff0000"
+    }
+});
+
+document.querySelector("#btn").onclick = e => {
+    //event.preventDefault
 }
