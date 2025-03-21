@@ -1,14 +1,14 @@
-let nombre = document.querySelector(".nombre")
-let mail = document.querySelector(".mail")
-let contra = document.querySelector(".contra") 
-let nuevaContra = document.querySelector(".nuevaContra")
-        
-let span1 = document.querySelector(".span1")
-let span2 = document.querySelector(".span2")
-let span3 = document.querySelector(".span3")
-let span4 = document.querySelector(".span4")
-
+const nombre = document.querySelector(".nombre")
+const mail = document.querySelector(".mail")
+const contra = document.querySelector(".contra") 
+const nuevaContra = document.querySelector(".nuevaContra")   
+const span1 = document.querySelector(".span1")
+const span2 = document.querySelector(".span2")
+const span3 = document.querySelector(".span3")
+const span4 = document.querySelector(".span4")
+const formulario = document.querySelector(".form")
 let mensajeNombre
+
 nombre.addEventListener("input", (event) => {
     if(nombre.value.length <= 3 ){
         mensajeNombre = "El nombre debe de tener mas de tres caracteres."
@@ -66,6 +66,14 @@ nuevaContra.addEventListener("input", (event) => {
     }
 });
 
-document.querySelector("#btn").onclick = e => {
-    //event.preventDefault
-}
+formulario.addEventListener("submit", (event)=>{
+
+    event.preventDefault();
+    let validar = ValidarContra(contra)
+    if(nombre.value.length <= 3 || !mail.value.includes("@") || !validar || nuevaContra.value != contra.value){
+        alert("No se a podido enviar, tienes algun campo mal.");
+    }
+    else{
+        alert("Se a enviado correctamente.");
+    }
+})
